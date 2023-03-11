@@ -3,7 +3,7 @@ import cv2
 
 
 class DetectObject:
-    def __init__(self, xml_train_path):
+    def __init__(self, xml_train_path: str):
         self.detector = cv2.CascadeClassifier(xml_train_path)
 
     def detect_in_image(self, image_path: str) -> None:
