@@ -1,7 +1,9 @@
-build:
-	docker build -t opencv-python .
+PRETRAIN=$(shell pwd)/pretrain
+IMAGES=$(shell pwd)/images
+EXAMPLES=$(shell pwd)/examples
 
-run: 
-	docker run -v $(shell pwd)/examples/:/examples/ \
-	opencv-python \
-	python3 /examples/1-basic.py
+faces-basic:
+	PRETRAIN=${PRETRAIN} IMAGES=${IMAGES} python3 ./examples/1-faces/basic.py
+
+faces-cam-basic:
+	PRETRAIN=${PRETRAIN} IMAGES=${IMAGES} python3 ./examples/1-faces/cam.py

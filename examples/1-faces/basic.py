@@ -1,10 +1,9 @@
 import cv2
-
-
+import os
 
 class DetectObject:
-    def __init__(self, xml_train_path: str):
-        self.detector = cv2.CascadeClassifier(xml_train_path)
+    def __init__(self, xml_training_path: str):
+        self.detector = cv2.CascadeClassifier(xml_training_path)
 
     def detect_in_image(self, image_path: str) -> None:
         # Read the input image
@@ -19,10 +18,13 @@ class DetectObject:
         # Display the output
         cv2.imshow('img', img)
 
-detector = DetectObject('haarcascade_frontalface_default.xml')
 
-# detect_faces('./images/20230118_103814.jpg') 
-detector.detect_in_image('./images/DSC05420.jpg') 
+detector = DetectObject(os.getenv("PRETRAIN") + "/haarcascade_frontalface_default.xml")
 
-cv2.waitKey()
-cv2.destroyAllWindows()
+detector.detect_in_image(os.getenv("IMAGES") + "/DSC05420.jpg") 
+
+while True:
+    pressed_key = cv2.waitKey(30) & 0xff
+    if pressed_key == 27:
+        cv2.destroyAllWindows()
+        break
