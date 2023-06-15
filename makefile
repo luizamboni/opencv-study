@@ -1,4 +1,5 @@
 PRETRAIN=$(shell pwd)/pretrain
+MODELS=$(shell pwd)/models
 IMAGES=$(shell pwd)/images
 EXAMPLES=$(shell pwd)/examples
 TRAIN_IMAGES=$(shell pwd)/train_images
@@ -15,6 +16,16 @@ faces-cam-basic:
 
 faces-cam-train:
 	PRETRAIN=${PRETRAIN} \
-	IMAGES=${IMAGES} \
 	TRAIN_IMAGES=${TRAIN_IMAGES} \
 	python3 ./examples/1-faces/record-faces.py
+
+faces-train:
+	MODELS=${MODELS} \
+	TRAIN_IMAGES=${TRAIN_IMAGES} \
+	python3 ./examples/1-faces/train.py	
+
+eigen-faces:
+	PRETRAIN=${PRETRAIN} \
+	MODELS=${MODELS} \
+	TRAIN_IMAGES=${TRAIN_IMAGES} \
+	python3 ./examples/1-faces/eigenface-recognition.py	
