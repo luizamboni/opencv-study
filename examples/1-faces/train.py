@@ -2,8 +2,14 @@ import cv2
 import numpy as np
 import os
 
-eigenface = cv2.face.EigenFaceRecognizer_create()
-fisherface = cv2.face.FisherFaceRecognizer_create()
+eigenface = cv2.face.EigenFaceRecognizer_create(
+    num_components=50, 
+    # threshold=1.5,
+)
+fisherface = cv2.face.FisherFaceRecognizer_create(
+    num_components=50, 
+    # threshold=1.5,
+)
 lbph = cv2.face.LBPHFaceRecognizer_create()
 
 def read_images():

@@ -28,4 +28,28 @@ eigen-faces:
 	PRETRAIN=${PRETRAIN} \
 	MODELS=${MODELS} \
 	TRAIN_IMAGES=${TRAIN_IMAGES} \
-	python3 ./examples/1-faces/eigenface-recognition.py	
+	python3 ./examples/1-faces/eigenface-recognition.py
+
+fisher-faces:
+	PRETRAIN=${PRETRAIN} \
+	MODELS=${MODELS} \
+	TRAIN_IMAGES=${TRAIN_IMAGES} \
+	python3 ./examples/1-faces/fisherface-recognition.py
+
+lbph-faces:
+	PRETRAIN=${PRETRAIN} \
+	MODELS=${MODELS} \
+	TRAIN_IMAGES=${TRAIN_IMAGES} \
+	python3 ./examples/1-faces/LBPHface-recognition.py
+
+yale-train:
+	MODELS=${MODELS} \
+	TRAIN_IMAGES=${TRAIN_IMAGES} \
+	python3 ./examples/1-faces/yale-train.py
+
+
+yale-validation:
+	MODELS=${MODELS} \
+	TRAIN_IMAGES=${TRAIN_IMAGES} \
+	PRETRAIN=${PRETRAIN} \
+	python3 ./examples/1-faces/yale-validation.py
